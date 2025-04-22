@@ -52,17 +52,30 @@ function App() {
           <h3>Public Repos:</h3>
           <ul>
             {repos.map(repo => (
-              <li key={repo.id}>
-                <a href={repo.html_url} target="_blank" rel="noreferrer">
-                  {repo.name}
-                </a>
-              </li>
+            <li key={repo.id} style={{
+                      background: '#fff',
+                      padding: '1rem',
+                      marginBottom: '1rem',
+                      borderRadius: '8px',
+                      boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+                      }}>
+                      <a href={repo.html_url} target="_blank" rel="noreferrer" style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+                      {repo.name}
+                    </a>
+                  <p style={{ marginTop: '0.5rem', color: '#666' }}>{repo.description || 'No description'}</p>
+                </li>
+
             ))}
           </ul>
         </div>
       )}
+        <footer style={{ marginTop: '3rem', fontSize: '0.9rem', color: '#777' }}>
+  Built by Anthony Lewallen © {new Date().getFullYear()}
+</footer>
     </div>
   );
 }
+
+
 
 export default App;
