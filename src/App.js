@@ -34,6 +34,7 @@ function App() {
 
   return (
     // <div style={{ maxWidth: '600px', margin: '2rem auto', fontFamily: 'Arial' }}>
+    <div className = "container">
       <h1>GitFolio</h1>
       <input
         type="text"
