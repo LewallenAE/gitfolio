@@ -12,6 +12,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import './gitfolioStyles.css';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -32,7 +33,7 @@ function App() {
   };
 
   return (
-    <div style={{ maxWidth: '600px', margin: '2rem auto', fontFamily: 'Arial' }}>
+    // <div style={{ maxWidth: '600px', margin: '2rem auto', fontFamily: 'Arial' }}>
       <h1>GitFolio</h1>
       <input
         type="text"
