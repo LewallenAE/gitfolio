@@ -56,6 +56,7 @@ function App() {
       <div className="container">
         <h1>GitFolio</h1>
 
+        {/* 🌗 Dark Mode Toggle */}
         <div className="toggle-wrapper">
           <label className="switch" aria-label="Toggle dark mode">
             <input type="checkbox" checked={darkMode} onChange={toggleDarkMode} />
@@ -69,6 +70,7 @@ function App() {
         <main>
           <section aria-labelledby="profile-section">
             <h2 id="profile-section" className="visually-hidden">GitHub Profile Search</h2>
+
             <form onSubmit={(e) => {
               e.preventDefault();
               fetchUser();
@@ -85,10 +87,12 @@ function App() {
             </form>
 
             {error && <p className="status-message" role="alert">{error}</p>}
-            {loading && <>
-              <ClipLoader color="#0366d6" />
-              <p role="status" style={{ marginTop: '1rem', color: '#666' }}>Loading...</p>
-            </>}
+            {loading && (
+              <>
+                <ClipLoader color="#0366d6" />
+                <p role="status" style={{ marginTop: '1rem', color: '#666' }}>Loading...</p>
+              </>
+            )}
 
             {!userData && !error && (
               <p className="status-message">Search for a GitHub user to see profile and repositories.</p>
@@ -108,6 +112,29 @@ function App() {
                 <ul>
                   {repos.map(repo => (
                     <li key={repo.id} className="repo-card">
-                      <a href={repo.html_url} target="_blank" rel="noreferrer">{repo.name}</a>
+                      <a href={repo.html_url} target="_blank" rel="noreferrer">
+                        {repo.name}
+                      </a>
                       <p>{repo.description || 'No description'}</p>
-                      <p
+                      <p className="language-tag">{repo.language || 'Unknown'}</p>
+                      <p className="last-updated">
+                        Last updated: {new Date(repo.updated_at).toLocaleDateString()}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </section>
+        </main>
+
+        {/* 👇 Footer */}
+        <footer style={{ marginTop: '3rem', fontSize: '0.9rem', color: '#777' }}>
+          Built by Anthony Lewallen © {new Date().getFullYear()}
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+export default App;
