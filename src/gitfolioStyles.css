@@ -68,3 +68,34 @@ li {
   margin: 2rem auto;
   font-family: Arial, sans-serif;
 }
+
+
+.repo-card {
+  background: #fff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;           /* 🧠 Stops stretching on wide screens */
+  word-wrap: break-word;      /* ✅ Breaks long words */
+  overflow-wrap: break-word;  /* ✅ Fallback for some browsers */
+  box-sizing: border-box;     /* ✅ Includes padding in total width */
+}
+
+.repo-card a {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #0366d6;
+  text-decoration: none;
+}
+
+.repo-card a:hover {
+  text-decoration: underline;
+}
+
+.repo-card p {
+  margin-top: 0.5rem;
+  color: #666;
+}
+
