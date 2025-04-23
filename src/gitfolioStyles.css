@@ -100,3 +100,47 @@ li {
   color: #666;
 }
 
+.language-tag {
+  display: inline-block;
+  background-color: #eef;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 0.5rem;
+}
+/*   For mobile.
+*/
+@media (max-width: 480px) {
+  input,
+  button {
+    width: 100%;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .repo-card {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+  }
+
+  .repo-card a {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+}
+
+
+
