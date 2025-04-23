@@ -178,6 +178,35 @@ li {
   color: #bbb;
 }
 
+.container {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.dark-mode p {
+  color: #ccc;
+}
+
+.dark-mode h3 {
+  color: #ddd;
+}
+
+.status-message {
+  text-align: center;
+  font-style: italic;
+  color: #777;
+  margin-top: 1.5rem;
+}
+
+.dark-mode .status-message {
+  color: #aaa;
+}
+
+.status-message[role="alert"] {
+  color: #d9534f; /* Bootstrap-style red */
+  font-weight: bold;
+}
+
+
 
 
 
