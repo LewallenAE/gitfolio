@@ -11,10 +11,6 @@ function App() {
   const [error, setError] = useState('');
   const inputRef = useRef(null);
 
-  useEffect(() => {
-    inputRef.current?.focus();
-  }, []);
-
   const getInitialTheme = () => {
     const saved = localStorage.getItem('darkMode');
     return saved === 'true';
@@ -46,6 +42,18 @@ function App() {
     }
   };
 
+  useEffect(() => {
+  inputRef.current?.focus();
+}, []);
+
+useEffect(() => {
+  document.body.classList.toggle('dark-mode', darkMode);
+  document.documentElement.classList.toggle('dark-mode', darkMode); // <html> tag
+}, [darkMode]);
+
+
+
+
   return (
     <div className={darkMode ? 'dark-mode full-page-wrapper' : 'full-page-wrapper'}>
       <div className="container">
@@ -57,8 +65,10 @@ function App() {
         >
           {darkMode ? '🌞 Light Mode' : '🌙 Dark Mode'}
         </button>
+          
 
         <main>
+          <section aria-labelledby="profile-section">
           <form
             onSubmit={(e) => {
               e.preventDefault();
@@ -105,6 +115,7 @@ function App() {
               </ul>
             </div>
           )}
+            </section>
         </main>
 
         <footer style={{ marginTop: '3rem', fontSize: '0.9rem', color: '#777' }}>
