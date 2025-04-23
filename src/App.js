@@ -18,6 +18,7 @@ function App() {
   const [username, setUsername] = useState('');
   const [userData, setUserData] = useState(null);
   const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchUser = async () => {
     try {
@@ -29,8 +30,10 @@ function App() {
       alert('User not found!');
       setUserData(null);
       setRepos([]);
-    }
-  };
+    } finally {
+      setLoading(false);
+  }
+  };   
 
   return (
     // <div style={{ maxWidth: '600px', margin: '2rem auto', fontFamily: 'Arial' }}>
@@ -43,6 +46,13 @@ function App() {
         placeholder="Enter GitHub username"
       />
       <button onClick={fetchUser}>Search</button>
+    {loading && <p style={{ marginTop: '1rem', color: '#666' }}>Loading...</p>}
+          
+        {!userData && (
+  <p style={{ marginTop: '2rem', color: '#999' }}>
+    Search for a GitHub user to see profile and repositories.
+  </p>
+)}
 
       {userData && (
         <div style={{ marginTop: '2rem' }}>
@@ -51,26 +61,29 @@ function App() {
           <p>{userData.bio}</p>
           <h3>Public Repos:</h3>
           <ul>
-            {repos.map(repo => (
-            <li key={repo.id} style={{
-                      background: '#fff',
-                      padding: '1rem',
-                      marginBottom: '1rem',
-                      borderRadius: '8px',
-                      boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
-                      }}>
-                      <a href={repo.html_url} target="_blank" rel="noreferrer" style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>
+              {repos.map(repo => (
+                <li key={repo.id} className="repo-card">
+                    <a href={repo.html_url} target="_blank" rel="noreferrer">
                       {repo.name}
                     </a>
-                  <p style={{ marginTop: '0.5rem', color: '#666' }}>{repo.description || 'No description'}</p>
+                  <p>{repo.description || 'No description'}</p>
+                  <p className="language-tag">{repo.language || 'Unknown'}</p>
+                         <p className="last-updated">
+  Last updated: {new Date(repo.updated_at).toLocaleDateString()}
+</p>
                 </li>
-
-            ))}
+              ))}
           </ul>
+
+
+            
         </div>
       )}
+
+{/* Footer */}
         <footer style={{ marginTop: '3rem', fontSize: '0.9rem', color: '#777' }}>
   Built by Anthony Lewallen © {new Date().getFullYear()}
+
 </footer>
     </div>
   );
