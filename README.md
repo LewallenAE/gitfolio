@@ -7,7 +7,7 @@ Users can enter a GitHub username and instantly view:
 - 📁 List of public repositories (with clickable links)
 
 ## 🌐 Live Demo
-[https://gitfolio.vercel.app](https://gitfolio.vercel.app)
+[https://gitfolio.vercel.app](https://gitfolio-phi.vercel.app)
 
 > Try it with: `lewallenae`
 
